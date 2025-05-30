@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Boxing Overlay Dock</title>
+  <script defer src="dock.js"></script>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+  
+    .tabs {
+      display: flex;
+      margin-bottom: 10px;
+    }
+  
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      background: #333;
+      margin-right: 5px;
+    }
+  
+    .tab.active {
+      background: limegreen;
+      color: black;
+    }
+  
+    .tab-content {
+        display: none;
+        min-height: 75vh;
+        justify-content: center;
+        align-items: flex-start; 
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+  
+    .tab-content-inner {
+      text-align: center;
+      margin-top: 40px;
+    }
+  
+    .columns {
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      gap: 100px;
+      margin-top: 20px;
+    }
+  
+    .column {
+      width: 200px;
+      text-align: left;
+    }
+  
+    .fighter-option {
+      margin-bottom: 8px;
+    }
+  
+    #sendBtn {
+      margin-top: 30px;
+      padding: 10px 30px;
+      background: limegreen;
+      color: black;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .toast-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#toastText {
+  width: 80%;
+  max-width: 600px;
+  font-size: 18px;
+  padding: 10px;
+  border: 2px solid red;
+  border-radius: 6px;
+  background-color: black;
+  color: white;
+  resize: none;
+  font-family: Arial, sans-serif;
+  margin-bottom: 15px;
+}
+
+.toast-options {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+#toastDuration {
+  padding: 8px 12px;
+  background-color: #222;
+  color: white;
+  border: 2px solid red;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#sendToastBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#sendToastBtn:hover {
+  background: darkred;
+}
+
+  </style>  
+</head>
+<body>
+  <div class="tabs">
+    <div class="tab active" data-tab="fights">Fights</div>
+    <div class="tab" data-tab="toast">Toast</div>
+  </div>
+
+  <div id="fights" class="tab-content active">
+    <div class="tab-content-inner">
+      <h2>Select Fighters</h2>
+      <div class="columns">
+        <div class="column">
+          <h3>Red Corner</h3>
+          <form id="redCorner"></form>
+        </div>
+        <div class="column">
+          <h3>Blue Corner</h3>
+          <form id="blueCorner"></form>
+        </div>
+      </div>
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>  
+
+  <div id="toast" class="tab-content">
+    <div class="tab-content-inner">
+      <h2>Send Toast Message</h2>
+      <div class="toast-controls">
+        <textarea id="toastText" placeholder="Enter message..." rows="4"></textarea>
+        <div class="toast-options">
+          <select id="toastDuration">
+            <option value="5000">5 seconds</option>
+            <option value="10000">10 seconds</option>
+            <option value="30000">30 seconds</option>
+          </select>
+          <button id="sendToastBtn">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
