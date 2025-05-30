@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       blueCorner.appendChild(blueDiv);
     });
   
-    // Handle send button
     document.getElementById("sendBtn").addEventListener("click", () => {
       const red = document.querySelector("input[name='redFighter']:checked")?.value;
       const blue = document.querySelector("input[name='blueFighter']:checked")?.value;
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
   
-      // Send to server for OBS overlay update
       fetch("/set-fight", {
         method: "POST",
         headers: {
@@ -65,7 +63,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
   
-    // Tab switching logic
     document.querySelectorAll(".tab").forEach(tab => {
       tab.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));

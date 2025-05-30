@@ -39,7 +39,6 @@ app.post('/set-fight', (req, res) => {
   lastSentFight = { red, blue };
   console.log(`Selected Fight: ${red} vs ${blue}`);
 
-  // Notify all overlays
   wss.clients.forEach(client => {
     if (client.readyState === 1) {
       client.send(JSON.stringify(currentFight));
@@ -55,7 +54,7 @@ app.get('/current-fight', (req, res) => {
 });
 
 server.listen(port, () => {
-    console.log(`✅ Server + WebSocket running at http://localhost:${port}`);
+    console.log(`Server + WebSocket running at http://localhost:${port}`);
   });
   
 
@@ -72,7 +71,7 @@ app.get('/overlay', (req, res) => {
   app.post('/send-toast', (req, res) => {
     const { message, duration } = req.body;
     latestToast = { message, duration };
-    console.log(`📢 Toast: "${message}" for ${duration}ms`);
+    console.log(`Toast: "${message}" for ${duration}ms`);
   
     wss.clients.forEach(client => {
       if (client.readyState === 1) {
